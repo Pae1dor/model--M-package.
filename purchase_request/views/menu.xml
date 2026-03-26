@@ -1,0 +1,12 @@
+<odoo>
+<record model="ir.actions.act_window" id="action_project_list">
+<field name="name">Projects</field>
+<field name="res_model">pr.project.pae</field>
+<field name="view_mode">tree,form,kanban,calendar</field>
+<field name="help" type="html">
+<p class="oe_view_nocontent_create">Click this to create the first project</p>
+</field>
+</record>
+<menuitem id="menu_projects" name="Projects" parent="purchase.menu_purchase_root" sequence="6"/>
+<menuitem id="menu_projects_action" name="Projects" parent="menu_projects" action="action_project_list"/>
+</odoo>

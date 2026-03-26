@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ===== LIST/TREE VIEW ===== -->
+    <record model="ir.ui.view" id="view_project_list">
+        <field name="name">project.list</field>
+        <field name="model">pr.project.pae</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Project List">
+                <field name="name"/>
+                <field name="department"/>
+                <field name="type"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="year"/>
+                <field name="aging"/>
+                <field name="budget"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ===== FORM VIEW ===== -->
+    <record model="ir.ui.view" id="view_project_form">
+        <field name="name">project.form</field>
+        <field name="model">pr.project.pae</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Project Form">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Project Name"/>
+                        <h1>
+                            <field name="name" placeholder="Enter project name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="department"/>
+                            <field name="owner_id"/>
+                            <field name="type"/>
+                            <field name="budget"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="year"/>
+                            <field name="aging"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===== KANBAN VIEW ===== -->
+    <record model="ir.ui.view" id="view_project_kanban">
+        <field name="name">project.kanban</field>
+        <field name="model">pr.project.pae</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban string="Projects" record_create="false">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="image"/>
+                <field name="owner_id"/>
+                <field name="department"/>
+                <field name="type"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('pr.project.pae', 'image', record.id.raw_value)" alt="Project"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                                <ul>
+                                    <li>
+                                        By: <field name="owner_id"/>
+                                    </li>
+                                    <li>
+                                        Department: <field name="department"/>
+                                    </li>
+                                    <li>
+                                        Type: <field name="type"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ===== CALENDAR VIEW ===== -->
+    <record model="ir.ui.view" id="view_project_calendar">
+        <field name="name">project.calendar</field>
+        <field name="model">pr.project.pae</field>
+        <field name="type">calendar</field>
+        <field name="arch" type="xml">
+            <calendar string="Project Calendar"
+                      date_start="start_date"
+                      date_stop="end_date"
+                      color="type"
+                      mode="month">
+                <field name="name"/>
+                <field name="owner_id"/>
+                <field name="department"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- ===== ACTION WINDOW ===== -->
+    <record model="ir.actions.act_window" id="action_project_list">
+        <field name="name">Projects</field>
+        <field name="res_model">pr.project.pae</field>
+        <field name="view_mode">tree,form,kanban,calendar</field>
+        <field name="view_id" ref="view_project_list"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to create your first project
+            </p>
+        </field>
+    </record>
+
+</odoo>

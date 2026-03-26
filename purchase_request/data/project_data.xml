@@ -1,0 +1,22 @@
+<odoo>
+<data noupdate="1">
+    <record model="pr.project.pae" id="prj01">
+<field name="name">Yoo</field>
+<field name="budget">400000</field>
+<field name="type">N</field>
+<field name="department">Production</field>
+    </record>
+    <record model="pr.project.pae" id="prj02">
+<field name="name">Test</field>
+<field name="budget">300000</field>
+<field name="type">N</field>
+<field name="department">Production</field>
+    </record>
+    <record model="pr.project.pae" id="prj03">
+<field name="name">Tao</field>
+<field name="budget">530000</field>
+<field name="type">U</field>
+<field name="department">Production</field>
+    </record>
+</data>
+</odoo>

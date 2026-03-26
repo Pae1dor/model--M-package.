@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_user_root,pr.project.pae,model_pr_project_pae,base.group_system,1,1,1,1
+access_project_user_all,pr.project.pae,model_pr_project_pae,base.group_user,1,0,0,0
+
+access_project_user_manager,pr.project.pae,model_pr_project_pae,purchase_request.group_project_manager,1,1,1,1
+access_project_user_user,pr.project.pae,model_pr_project_pae,purchase_request.group_project_user,1,0,0,0

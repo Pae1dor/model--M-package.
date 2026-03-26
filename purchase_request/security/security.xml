@@ -1,0 +1,29 @@
+<odoo>
+<data noupdate="1">
+<record model="ir.module.category" id="module_pr">
+<field name="name">PR Module</field>
+<field name="sequence">6</field>
+</record>
+
+<record id="group_project_user" model="res.groups">
+<field name="name">User</field>
+<field name="category_id" ref="module_pr"/>
+</record>
+
+<record id="group_project_manager" model="res.groups">
+<field name="name">Manager</field>
+<field name="category_id" ref="module_pr"/>
+<field name="implied_ids" eval="[(4, ref('group_project_user'))]"/>
+<field name="users" eval="[(4, ref('base.user_root'))]"/>
+</record>
+</data>
+
+<data noupdate="1">
+<record model="ir.rule" id="rule_pr_project_user">
+<field name="name">To access project by creator id</field>
+<field name="model_id" ref="model_pr_project_pae"/>
+<field name="groups" eval="[ (4, ref('group_project_user')), (4, ref('group_project_manager'))]"/>
+<field name="domain_force">[('create_uid','=',user.id)]</field>
+</record>
+</data>
+</odoo>
